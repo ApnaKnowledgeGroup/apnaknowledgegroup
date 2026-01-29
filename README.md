@@ -1,3 +1,6 @@
+## 👤 Author
+Aman 
+Founder – Apna Knowledge Group
 # Apna Knowledge Group
 
 **Apna Knowledge Group** is a free and professional **Hindi General Knowledge (GK) mock test platform** built for competitive exam aspirants.  
@@ -15,22 +18,22 @@ The project is lightweight, modular, and developer-friendly, making it easy to e
 
 ## ✨ Features
 
-- Free access to Hindi GK quizzes and mock tests  
-- Haryana-focused GK and state-specific questions  
-- Timed mock tests with instant results  
-- Leaderboards to track and compare performance  
-- Detailed explanations for every question  
-- Lightweight and modular architecture  
-- Offline-friendly JSON-based question sets  
+- ✅ Free access to Hindi GK quizzes and mock tests  
+- 🏛️ Haryana-focused GK and state-specific questions  
+- ⏱️ Timed mock tests with instant results  
+- 🏆 Leaderboards to compare performance  
+- 📖 Detailed explanations for every question  
+- ⚡ Lightweight and modular architecture  
+- 📂 Offline-friendly JSON-based question sets  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Frontend: React.js / Next.js  
-- Backend (Optional): Node.js / Firebase  
-- Database: Firestore or static JSON files  
-- Hosting: Vercel, Netlify, GitHub Pages  
+- **Frontend:** React.js / Next.js  
+- **Backend (Optional):** Node.js / Firebase  
+- **Database:** Firestore or static JSON files  
+- **Hosting:** Vercel, Netlify, GitHub Pages  
 
 ---
 
