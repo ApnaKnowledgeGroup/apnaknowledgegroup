@@ -1,7 +1,10 @@
 ## 👤 Author
-Aman 
-Founder – Apna Knowledge Group
-# Apna Knowledge Group
+
+**Aman**  
+Founder & Developer – **Apna Knowledge Group**  
+
+Dedicated to helping students prepare smarter for competitive exams with **Hindi GK & Haryana-focused content** 🇮🇳
+
 
 **Apna Knowledge Group** is a free and professional **Hindi General Knowledge (GK) mock test platform** built for competitive exam aspirants.  
 The platform focuses especially on **Haryana-specific GK content** for exams like **SSC, Banking, and other Government exams**.
