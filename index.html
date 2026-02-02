@@ -1,413 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>ApnaKnowledgeGroup — Free GK Mock Tests & Practice</title>
-  <meta name="description" content="ApnaKnowledgeGroup par practise karein: timed GK mock tests, detailed explanations, topic-wise reports. Free demo try karein aur improve karein." />
-  <meta name="theme-color" content="#0b74ff" />
-  <style>
-    :root{
-      --bg:#f6fbff; --card:#ffffff; --accent:#0b74ff; --accent-700:#095ecc;
-      --muted:#6b7280; --shadow: 0 8px 28px rgba(15,23,42,0.06);
-      --radius:12px; --maxw:1100px; --gap:18px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Devanagari";
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,#f6fbff 0%, #ffffff 100%);color:#0f172a;line-height:1.45;-webkit-font-smoothing:antialiased}
-    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#6c9cff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px}
-    .tag{font-size:12px;color:var(--muted)}
-    .cta-primary{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(11,116,255,0.12)}
-    .cta-ghost{padding:8px 12px;border-radius:8px;background:#fff;border:1px solid #e6eefc;text-decoration:none;color:var(--accent);font-weight:700}
+    <meta charset="UTF-8">
+    <title>Exam Instructions</title>
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
-    .title{font-size:30px;font-weight:800;margin:0 0 12px}
-    .lead{margin:0 0 18px;color:var(--muted)}
-    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .badge{background:#eef6ff;color:var(--accent);padding:8px 10px;border-radius:999px;font-weight:700;font-size:13px}
 
-    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .visual{display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f0f7ff);text-align:center}
-    .visual img{max-width:100%;border-radius:8px}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 30px;
+        }
 
-    /* features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-    .feat{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;border:1px solid #f1f5f9;background:#fff}
-    .feat h4{margin:0;font-size:15px}
-    .feat p{margin:4px 0 0;color:var(--muted);font-size:13px}
 
-    /* Popular tests */
-    .tests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-    .test-card{padding:14px;border-radius:10px;border:1px solid #eef2ff;background:#fff;display:flex;flex-direction:column;gap:8px}
-    .meta{font-size:13px;color:var(--muted)}
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-    /* sample question */
-    .sample{display:grid;grid-template-columns:1fr 300px;gap:16px;margin-top:22px}
-    .q-options{display:flex;flex-direction:column;gap:9px;margin-top:12px}
-    .option{padding:12px;border-radius:10px;border:1px solid #e6eefc;cursor:pointer;background:#fff;text-align:left}
-    .option.selected{border-color:var(--accent);box-shadow:0 6px 16px rgba(11,116,255,0.06)}
-    .option.correct{border-color:green;background:#ecfdf5}
-    .option.wrong{border-color:#ef4444;background:#fff1f2}
 
-    /* testimonials */
-    .testimonials{display:flex;gap:12px;margin-top:22px}
-    .testimonial{flex:1;padding:14px;border-radius:10px;background:#fff;border:1px solid #eef2ff}
+        h2 {
+            margin-bottom: 10px;
+        }
 
-    /* pricing / CTA strip */
-    .strip{margin-top:26px;border-radius:12px;padding:18px;background:linear-gradient(90deg,#0b74ff 0%, #6c9cff 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .strip .left{max-width:720px}
-    .strip h3{margin:0;font-size:18px}
-    .strip p{margin:6px 0 0;color:rgba(255,255,255,0.9)}
 
-    /* footer */
-    footer{margin-top:34px;padding:24px 0;color:var(--muted);font-size:14px;border-top:1px solid #e6eefc}
+        .instructions {
+            line-height: 1.6;
+            font-size: 15px;
+        }
 
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;padding:18px;z-index:60}
-    .modal{width:100%;max-width:520px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 18px 60px rgba(2,6,23,0.5)}
-    .form-row{display:flex;gap:8px}
-    .input{flex:1;padding:10px;border-radius:8px;border:1px solid #e6eefc;font-size:15px}
-    .small{font-size:13px;color:var(--muted)}
 
-    /* responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .features{grid-template-columns:1fr}
-      .tests-grid{grid-template-columns:repeat(2,1fr)}
-      .sample{grid-template-columns:1fr}
-      nav{display:none}
-    }
-    @media (max-width:560px){
-      .tests-grid{grid-template-columns:1fr}
-      .visual{height:200px}
-      .strip{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+        .confirm-section {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .confirm-section label {
+            font-size: 14px;
+        }
+
+
+        .next-btn {
+            margin-left: auto;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+
+        .next-btn:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a class="brand" href="#" aria-label="ApnaKnowledgeGroup">
-        <div class="logo" aria-hidden="true">AKG</div>
-        <div>
-          <div style="font-weight:800">ApnaKnowledgeGroup</div>
-          <div class="tag">GK Mock Tests • Practice • Improve</div>
-        </div>
-      </a>
-      <div style="display:flex;gap:10px;align-items:center">
-        <a class="cta-ghost" href="#features">Features</a>
-        <a class="cta-ghost" href="#faq">FAQ</a>
-        <a class="cta-primary" id="startBtn" href="#get-started">Start Free Mock</a>
-      </div>
-    </header>
 
-    <!-- HERO -->
-    <main class="hero" role="main" aria-labelledby="hero-heading">
-      <div>
-        <h1 id="hero-heading" class="title">ApnaKnowledgeGroup — Free GK Mock Tests</h1>
-        <p class="lead">
-          Timed mock tests, detailed solutions aur topic-wise performance reports. Rozana practise karein aur apni kamzori par focus karke score improve karein.
-        </p>
 
-        <div style="display:flex;gap:12px;align-items:center">
-          <a class="cta-primary" id="heroStart" href="#get-started">Abhi Shuru Karein — Free</a>
-          <a class="cta-ghost" href="#sample">Free Demo Question</a>
-        </div>
+<div class="container">
+    <h2>📝 सामान्य निर्देश</h2>
 
-        <div class="badges" aria-hidden="true">
-          <div class="badge">50,000+ Attempts</div>
-          <div class="badge">1000+ Questions</div>
-          <div class="badge">Daily Updated Current Affairs</div>
-        </div>
 
-        <section id="features" class="features" aria-label="key features">
-          <div class="feat card">
-            <div>
-              <h4>Real Exam Pattern</h4>
-              <p>Timed mocks with real exam rules — negative marking optional.</p>
-            </div>
-          </div>
-          <div class="feat card">
-            <div>
-              <h4>Detailed Explanations</h4>
-              <p>Har question ka step-by-step solution aur reference links.</p>
-            </div>
-          </div>
-          <div class="feat card">
-            <div>
-              <h4>Performance Reports</h4>
-              <p>Topic-wise strength/weakness aur improvement tracker.</p>
-            </div>
-          </div>
-        </section>
-      </div>
+    <div class="instructions">
+        <b>समय सीमा:</b><br>
+        सर्वर पर घड़ी सेट की गई है। स्क्रीन के ऊपर दाईं ओर काउंटडाउन टाइमर आपको परीक्षा समाप्त होने तक का शेष समय दिखाएगा।  
+        जब टाइमर शून्य पर पहुंचेगा, परीक्षा स्वतः समाप्त हो जाएगी।  
+        <br><br>
 
-      <aside class="card visual" aria-hidden="false">
-        <div style="font-weight:800;font-size:18px">Free Mock — Try in 30 seconds</div>
-        <div class="small" style="margin-top:8px">Signup optional — demo ke liye email de sakte hain</div>
-        <div style="margin-top:14px">
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='150'><rect rx='10' width='300' height='150' fill='%23ffffff' stroke='%23e6eefc'/><text x='150' y='80' font-size='14' text-anchor='middle' fill='%236b7280'>ApnaKnowledgeGroup Preview</text></svg>" alt="Preview">
-        </div>
-        <div style="margin-top:14px">
-          <a class="cta-primary" id="visualStart" href="#get-started">Start Demo</a>
-        </div>
-      </aside>
-    </main>
 
-    <!-- Popular Tests -->
-    <section aria-labelledby="popular-title">
-      <h2 id="popular-title" style="margin-top:28px">Popular Tests</h2>
-      <div class="tests-grid" role="list">
-        <div class="test-card card" role="listitem">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">General GK — 50 Qs</div>
-            <div class="meta">30 min</div>
-          </div>
-          <div class="meta">Mixed • Randomized</div>
-          <div style="margin-top:auto;display:flex;gap:8px">
-            <a class="cta-primary" href="#get-started">Start</a>
-            <a class="cta-ghost" href="#sample">Demo</a>
-          </div>
-        </div>
+        <b>प्रश्न पैलेट के संकेत:</b><br>
+        ⚪ सफेद वर्ग: आपने अभी तक प्रश्न नहीं देखा है।<br>
+        🔴 लाल गोला: आपने प्रश्न का उत्तर नहीं दिया है।<br>
+        🟢 हरा गोला: आपने प्रश्न का उत्तर दे दिया है।<br>
+        🟣 बैंगनी गोला: आपने प्रश्न का उत्तर नहीं दिया है, लेकिन उसे समीक्षा के लिए चिह्नित किया है।<br>
+        🟣✅ बैंगनी गोला + हरा टिक: उत्तर दिया गया और समीक्षा के लिए चिह्नित।
+        <br><br>
 
-        <div class="test-card card" role="listitem">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Current Affairs — 20 Qs</div>
-            <div class="meta">15 min</div>
-          </div>
-          <div class="meta">Daily Updated</div>
-          <div style="margin-top:auto;display:flex;gap:8px">
-            <a class="cta-primary" href="#get-started">Start</a>
-            <a class="cta-ghost" href="#sample">Demo</a>
-          </div>
-        </div>
 
-        <div class="test-card card" role="listitem">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:800">Bank PO Pattern — 100 Qs</div>
-            <div class="meta">60 min</div>
-          </div>
-          <div class="meta">Hard • Negative marking</div>
-          <div style="margin-top:auto;display:flex;gap:8px">
-            <a class="cta-primary" href="#get-started">Start</a>
-            <a class="cta-ghost" href="#sample">Demo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sample Question (compact) -->
-    <section id="sample" class="sample card" aria-labelledby="sample-title">
-      <div>
-        <h3 id="sample-title" style="margin:0 0 6px">Free Demo Question</h3>
-        <p class="small">Ek question try karein aur submit karte hi solution dekhiye.</p>
-
-        <div style="margin-top:12px">
-          <div id="question-text" style="font-weight:700">Bharat ka rashtriya phool kaun sa hai?</div>
-          <div id="options" class="q-options" role="listbox" aria-label="Options">
-            <button class="option" data-key="a" type="button">Genda</button>
-            <button class="option" data-key="b" type="button">Kamala</button>
-            <button class="option" data-key="c" type="button">Raat ki raani</button>
-            <button class="option" data-key="d" type="button">Chameli</button>
-          </div>
-
-          <div style="display:flex;gap:8px;margin-top:12px">
-            <button id="submitDemo" class="cta-primary">Submit</button>
-            <button id="clearDemo" class="cta-ghost">Clear</button>
-            <div id="demoResult" style="margin-left:auto;align-self:center" aria-live="polite"></div>
-          </div>
-
-          <div id="demoExplanation" class="small" style="margin-top:12px;display:none;border-left:3px solid #e6eefc;padding-left:10px"></div>
-        </div>
-      </div>
-
-      <aside class="card" aria-hidden="true">
-        <div style="font-weight:800">Quick Info</div>
-        <div class="small" style="margin-top:8px">Timer: <strong>00:30</strong></div>
-        <div class="small" style="margin-top:8px">Difficulty: <strong>Easy</strong></div>
-        <div style="margin-top:12px">
-          <a class="cta-primary" href="#get-started">Full Mock Shuru Karein</a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Testimonials -->
-    <section aria-labelledby="testi">
-      <h2 id="testi" style="margin-top:22px">Students Love It</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <div style="font-weight:800">Asha, Delhi</div>
-          <div class="small" style="margin-top:8px">"Daily mocks se meri accuracy badhi. Explanations bilkul clear hain."</div>
-        </div>
-        <div class="testimonial">
-          <div style="font-weight:800">Rohit, Lucknow</div>
-          <div class="small" style="margin-top:8px">"Free demo se start kiya aur ab paid series le raha hoon — bahut helpful."</div>
-        </div>
-        <div class="testimonial">
-          <div style="font-weight:800">Neha, Jaipur</div>
-          <div class="small" style="margin-top:8px">"Topic-wise reports se pata chala kaha weak hoon — ab targeted practise kar rahi hoon."</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA strip -->
-    <section class="strip" aria-hidden="false">
-      <div class="left">
-        <h3 style="margin:0">Limited Offer: Free 1 Full-Length Mock</h3>
-        <p style="margin:6px 0 0">Signup karte hi aapko ek free full mock mil jayega. Try karein aur dekhein apna improvement.</p>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center">
-        <a class="cta-primary" id="stripStart" href="#get-started">Get Free Mock</a>
-        <a class="cta-ghost" href="#pricing">Plans</a>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" style="margin-top:24px">
-      <h2>FAQ</h2>
-      <div style="display:grid;gap:10px;margin-top:8px">
-        <details class="card"><summary style="font-weight:700">Kya signup zaroori hai?</summary><div class="small" style="margin-top:8px">Demo ke liye signup optional hai. Full mock/history ko save karne ke liye signup karen.</div></details>
-        <details class="card"><summary style="font-weight:700">Payment options kya hain?</summary><div class="small" style="margin-top:8px">Free mocks forever. Premium series ke liye Stripe & Razorpay dono supported hain.</div></details>
-        <details class="card"><summary style="font-weight:700">Questions ka source kya hai?</summary><div class="small" style="margin-top:8px">Hamari team aur verified contributors se curated questions — har question ke saath explanation aur reference.</div></details>
-      </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer>
-      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">
-        <div>
-          <div style="font-weight:800">ApnaKnowledgeGroup</div>
-          <div class="small" style="margin-top:8px">Contact: support@apnaknowledgegroup.example • © 2026 ApnaKnowledgeGroup</div>
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <a class="small" href="#privacy">Privacy</a>
-          <a class="small" href="#terms">Terms</a>
-          <a class="small" href="#contact">Contact</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Modal for quick signup / capture -->
-  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document" aria-labelledby="modal-title">
-      <h3 id="modal-title" style="margin:0 0 8px">Get your Free Mock</h3>
-      <p class="small" style="margin:0 0 12px">Bas naam aur email dein — demo mock turant shuru.</p>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <input id="inpName" class="input" placeholder="Aapka naam" aria-label="Naam">
-        <input id="inpEmail" class="input" placeholder="Email address" aria-label="Email">
-        <div style="display:flex;gap:8px">
-          <button id="modalSubmit" class="cta-primary" style="flex:1">Start Free Mock</button>
-          <button id="modalClose" class="cta-ghost" style="flex:1">Cancel</button>
-        </div>
-        <div id="modalMsg" class="small" style="color:green;display:none"></div>
-      </div>
+        <b>प्रश्न पर जाने की प्रक्रिया:</b><br>
+        प्रश्न संख्या पर क्लिक करने से वर्तमान उत्तर सेव नहीं होगा।  
+        "सेव और अगला" पर क्लिक करने से उत्तर सेव होगा।
     </div>
-  </div>
 
-  <script>
-    // --- Demo question logic ---
-    (function(){
-      const correct = 'b';
-      const options = document.querySelectorAll('.option');
-      const submit = document.getElementById('submitDemo');
-      const clear = document.getElementById('clearDemo');
-      const result = document.getElementById('demoResult');
-      const explanation = document.getElementById('demoExplanation');
-      let selected = null;
 
-      options.forEach(o => {
-        o.addEventListener('click', () => {
-          options.forEach(x => x.classList.remove('selected'));
-          o.classList.add('selected');
-          selected = o.getAttribute('data-key');
-          result.textContent = '';
-          explanation.style.display = 'none';
-        });
-      });
+    <div class="confirm-section">
+        <input type="checkbox" id="agree">
+        <label for="agree">मैंने निर्देशों को पूरा पढ़ लिया है</label>
 
-      submit.addEventListener('click', () => {
-        if (!selected) {
-          result.textContent = 'Koi option select kijiye';
-          result.style.color = '#ef4444';
-          return;
-        }
-        options.forEach(o => {
-          o.disabled = true;
-          const k = o.getAttribute('data-key');
-          if (k === correct) o.classList.add('correct');
-          if (k !== correct && k === selected) o.classList.add('wrong');
-        });
-        if (selected === correct) {
-          result.textContent = 'Sahi jawab!';
-          result.style.color = 'green';
+
+        <button class="next-btn" onclick="startTest()">NEXT</button>
+    </div>
+</div>
+
+
+<script>
+    function startTest() {
+        const checkbox = document.getElementById("agree");
+
+
+        if (!checkbox.checked) {
+            alert("❗ टेस्ट शुरू करने के लिए पहले निर्देशों वाले बॉक्स को टिक करें।");
         } else {
-          result.textContent = 'Galat jawab';
-          result.style.color = '#ef4444';
+            // Yahan test start ya next page ka code aayega
+            alert("✅ टेस्ट शुरू हो रहा है...");
+            // window.location.href = "exam.html";
         }
-        explanation.style.display = 'block';
-        explanation.textContent = 'Explanation: Kamala (lotus) Bharat ka rashtriya phool hai.';
-      });
+    }
+</script>
 
-      clear.addEventListener('click', () => {
-        selected = null;
-        options.forEach(o => { o.classList.remove('selected','correct','wrong'); o.disabled = false; });
-        result.textContent = '';
-        explanation.style.display = 'none';
-      });
-    })();
 
-    // --- Modal / Quick signup capture (front-end only) ---
-    (function(){
-      const modal = document.getElementById('modal');
-      const startButtons = [document.getElementById('startBtn'), document.getElementById('heroStart'), document.getElementById('visualStart'), document.getElementById('stripStart')];
-      const modalClose = document.getElementById('modalClose');
-      const modalSubmit = document.getElementById('modalSubmit');
-      const inpName = document.getElementById('inpName');
-      const inpEmail = document.getElementById('inpEmail');
-      const modalMsg = document.getElementById('modalMsg');
-
-      function openModal(){
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden','false');
-        inpName.focus();
-      }
-      function closeModal(){
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden','true');
-        modalMsg.style.display = 'none';
-        inpName.value = '';
-        inpEmail.value = '';
-      }
-
-      startButtons.forEach(btn => {
-        if (btn) btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
-      });
-      modalClose.addEventListener('click', () => closeModal());
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-      modalSubmit.addEventListener('click', () => {
-        const name = inpName.value.trim();
-        const email = inpEmail.value.trim();
-        if (!name) { modalMsg.style.color = '#ef4444'; modalMsg.textContent = 'Naam daalein'; modalMsg.style.display = 'block'; return; }
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) { modalMsg.style.color = '#ef4444'; modalMsg.textContent = 'Valid email daalein'; modalMsg.style.display = 'block'; return; }
-
-        // Simulate signup/capture (replace with real API call)
-        modalMsg.style.color = 'green';
-        modalMsg.textContent = 'Signup successful — Redirecting to your free mock...';
-        modalMsg.style.display = 'block';
-        setTimeout(() => {
-          // In real app: redirect to test page or start test
-          closeModal();
-          alert('(Demo) Aapka free mock ab start karein — backend integration required.');
-        }, 1200);
-      });
-    })();
-  </script>
 </body>
 </html>
+
+
+
