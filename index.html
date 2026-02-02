@@ -1,126 +1,303 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <title>Exam Instructions</title>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haryana GK Mock Test</title>
 
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f6f9}
+.hidden{display:none}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            padding: 30px;
-        }
+/* ===== BUTTONS ===== */
+button{
+  padding:9px 18px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+}
+.primary{background:#1f3c88;color:#fff}
+.secondary{background:#555;color:#fff}
+.danger{background:#e74c3c;color:#fff}
 
+/* ===== START ===== */
+#start{
+  max-width:720px;
+  margin:50px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
+#start h2{color:#1f3c88}
 
-        .container {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+/* ===== INSTRUCTIONS ===== */
+#instructions{
+  max-width:800px;
+  margin:30px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
 
+/* ===== TOP BAR ===== */
+.topbar{
+  background:#1f3c88;
+  color:#fff;
+  padding:12px 18px;
+  display:flex;
+  justify-content:space-between;
+  font-weight:bold;
+}
 
-        h2 {
-            margin-bottom: 10px;
-        }
+/* ===== EXAM BODY ===== */
+.exam-body{display:flex}
 
+/* ===== PALETTE ===== */
+.palette{
+  width:22%;
+  background:#fff;
+  padding:10px;
+  border-right:1px solid #ccc;
+}
+.palette button{
+  width:40px;
+  height:40px;
+  margin:5px;
+  border-radius:4px;
+  font-weight:bold;
+  border:1px solid #000;
+}
 
-        .instructions {
-            line-height: 1.6;
-            font-size: 15px;
-        }
+/* Palette Colors */
+.not-visited{background:#fff}
+.not-answered{background:#e74c3c!important;color:#fff}
+.answered{background:#2ecc71!important;color:#fff}
+.review{background:#9b59b6!important;color:#fff}
+.review-answered{
+  background:#9b59b6!important;
+  color:#fff;
+  border:3px solid #2ecc71!important;
+}
 
+/* ===== QUESTION ===== */
+.question-panel{
+  width:78%;
+  background:#fff;
+  padding:25px;
+}
+.question-panel h3{margin-top:0}
 
-        .confirm-section {
-            margin-top: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* ===== RESULT / SOLUTION ===== */
+.box{
+  max-width:850px;
+  margin:30px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
 
-
-        .confirm-section label {
-            font-size: 14px;
-        }
-
-
-        .next-btn {
-            margin-left: auto;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 22px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-
-        .next-btn:hover {
-            background-color: #218838;
-        }
-    </style>
+/* ===== BACK BUTTON (PRO) ===== */
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+  color:#fff;
+  padding:12px 22px;
+  font-size:16px;
+  border-radius:30px;
+  box-shadow:0 5px 12px rgba(0,0,0,.25);
+}
+.back-btn:hover{transform:scale(1.05)}
+</style>
 </head>
+
 <body>
 
-
-<div class="container">
-    <h2>📝 सामान्य निर्देश</h2>
-
-
-    <div class="instructions">
-        <b>समय सीमा:</b><br>
-        सर्वर पर घड़ी सेट की गई है। स्क्रीन के ऊपर दाईं ओर काउंटडाउन टाइमर आपको परीक्षा समाप्त होने तक का शेष समय दिखाएगा।  
-        जब टाइमर शून्य पर पहुंचेगा, परीक्षा स्वतः समाप्त हो जाएगी।  
-        <br><br>
-
-
-        <b>प्रश्न पैलेट के संकेत:</b><br>
-        ⚪ सफेद वर्ग: आपने अभी तक प्रश्न नहीं देखा है।<br>
-        🔴 लाल गोला: आपने प्रश्न का उत्तर नहीं दिया है।<br>
-        🟢 हरा गोला: आपने प्रश्न का उत्तर दे दिया है।<br>
-        🟣 बैंगनी गोला: आपने प्रश्न का उत्तर नहीं दिया है, लेकिन उसे समीक्षा के लिए चिह्नित किया है।<br>
-        🟣✅ बैंगनी गोला + हरा टिक: उत्तर दिया गया और समीक्षा के लिए चिह्नित।
-        <br><br>
-
-
-        <b>प्रश्न पर जाने की प्रक्रिया:</b><br>
-        प्रश्न संख्या पर क्लिक करने से वर्तमान उत्तर सेव नहीं होगा।  
-        "सेव और अगला" पर क्लिक करने से उत्तर सेव होगा।
-    </div>
-
-
-    <div class="confirm-section">
-        <input type="checkbox" id="agree">
-        <label for="agree">मैंने निर्देशों को पूरा पढ़ लिया है</label>
-
-
-        <button class="next-btn" onclick="startTest()">NEXT</button>
-    </div>
+<!-- START -->
+<div id="start">
+  <h2>🧠 Haryana GK Mock Test</h2>
+  <p>कुल प्रश्न: 25</p>
+  <p>समय: 15 मिनट</p>
+  <button class="primary" onclick="showInstructions()">Start Test</button>
 </div>
 
+<!-- INSTRUCTIONS -->
+<div id="instructions" class="hidden">
+  <h3>📝 सामान्य निर्देश</h3>
+  <ul>
+    <li>⏱ समय समाप्त होने पर परीक्षा स्वतः सबमिट होगी</li>
+    <li>🟥 लाल – Not Answered</li>
+    <li>🟩 हरा – Answered</li>
+    <li>🟪 बैंगनी – Review</li>
+  </ul>
+  <hr>
+  <input type="checkbox" id="agree"> मैंने सभी निर्देश पढ़ लिए हैं  
+  <br><br>
+  <button class="primary" onclick="startTest()">Take Test</button>
+</div>
+
+<!-- EXAM -->
+<div id="exam" class="hidden">
+  <div class="topbar">
+    <div>Haryana GK Mock</div>
+    <div id="timer">15:00</div>
+  </div>
+
+  <div class="exam-body">
+    <div class="palette" id="palette"></div>
+
+    <div class="question-panel">
+      <h3 id="qtext"></h3>
+      <label><input type="radio" name="opt" value="0"> <span id="o0"></span></label><br>
+      <label><input type="radio" name="opt" value="1"> <span id="o1"></span></label><br>
+      <label><input type="radio" name="opt" value="2"> <span id="o2"></span></label><br>
+      <label><input type="radio" name="opt" value="3"> <span id="o3"></span></label><br><br>
+
+      <button class="secondary" onclick="clearResponse()">Clear</button>
+      <button class="secondary" onclick="markReview()">Mark for Review</button><br><br>
+
+      <button class="primary" onclick="prevQ()">Previous</button>
+      <button class="primary" onclick="saveNext()">Save & Next</button>
+      <button class="danger" onclick="submitTest()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="box hidden">
+  <h2>Result</h2>
+  <p id="summary"></p>
+  <button class="primary" onclick="showSolutions()">Solution</button>
+</div>
+
+<!-- SOLUTION -->
+<div id="solution" class="box hidden">
+  <h2>Solution & Analysis</h2>
+  <div id="solutionBox"></div><br>
+  <button class="back-btn" onclick="goStart()">⬅ Back to Start</button>
+</div>
 
 <script>
-    function startTest() {
-        const checkbox = document.getElementById("agree");
+/* QUESTIONS */
+const questions=[
+ {q:"हरियाणा की राजधानी?",o:["रोहतक","पानीपत","चंडीगढ़","हिसार"],c:2,s:"चंडीगढ़"},
+ {q:"राज्य दिवस?",o:["1 नव","15 अगस्त","26 जनवरी","2 अक्टूबर"],c:0,s:"1 नव 1966"}
+];
+while(questions.length<25){
+ let i=questions.length+1;
+ questions.push({q:`GK प्रश्न ${i}`,o:["A","B","C","D"],c:1,s:"Demo"});
+}
 
+/* STATE */
+let idx=0,time=900,timer;
+let resp={},visited=new Set(),review=new Set();
+const timerBox=document.getElementById("timer");
 
-        if (!checkbox.checked) {
-            alert("❗ टेस्ट शुरू करने के लिए पहले निर्देशों वाले बॉक्स को टिक करें।");
-        } else {
-            // Yahan test start ya next page ka code aayega
-            alert("✅ टेस्ट शुरू हो रहा है...");
-            // window.location.href = "exam.html";
-        }
-    }
+/* FLOW */
+function showInstructions(){
+ start.classList.add("hidden");
+ instructions.classList.remove("hidden");
+}
+
+function startTest(){
+ if(!agree.checked){alert("निर्देश स्वीकार करें");return;}
+ instructions.classList.add("hidden");
+ exam.classList.remove("hidden");
+ createPalette();
+ renderQ();
+ startTimer();
+}
+
+/* TIMER */
+function startTimer(){
+ timer=setInterval(()=>{
+  time--;
+  let m=Math.floor(time/60),s=time%60;
+  timerBox.innerText=`${m}:${s<10?"0"+s:s}`;
+  if(time<=0)submitTest();
+ },1000);
+}
+
+/* RENDER */
+function renderQ(){
+ visited.add(idx);
+ let q=questions[idx];
+ qtext.innerText=`Q${idx+1}. ${q.q}`;
+ q.o.forEach((v,i)=>o(i).innerText=v);
+ document.querySelectorAll("input[name=opt]").forEach(r=>r.checked=false);
+ if(resp[idx]!=null)document.querySelector(`input[value="${resp[idx]}"]`).checked=true;
+ updatePalette();
+}
+
+/* PALETTE */
+function createPalette(){
+ palette.innerHTML="";
+ questions.forEach((_,i)=>{
+  let b=document.createElement("button");
+  b.innerText=i+1;
+  b.onclick=()=>{idx=i;renderQ();}
+  palette.appendChild(b);
+ });
+}
+function updatePalette(){
+ palette.querySelectorAll("button").forEach((b,i)=>{
+  b.className="";
+  if(review.has(i)&&resp[i]!=null)b.classList.add("review-answered");
+  else if(review.has(i))b.classList.add("review");
+  else if(resp[i]!=null)b.classList.add("answered");
+  else if(visited.has(i))b.classList.add("not-answered");
+  else b.classList.add("not-visited");
+ });
+}
+
+/* ACTIONS */
+function saveNext(){
+ let s=document.querySelector("input[name=opt]:checked");
+ if(s)resp[idx]=+s.value;
+ idx=Math.min(idx+1,questions.length-1);
+ renderQ();
+}
+function prevQ(){idx=Math.max(idx-1,0);renderQ();}
+function clearResponse(){delete resp[idx];renderQ();}
+function markReview(){review.has(idx)?review.delete(idx):review.add(idx);updatePalette();}
+
+/* SUBMIT */
+function submitTest(){
+ clearInterval(timer);
+ exam.classList.add("hidden");
+ result.classList.remove("hidden");
+ let c=0,w=0,u=0;
+ questions.forEach((q,i)=>{
+  if(resp[i]==null)u++;
+  else if(resp[i]==q.c)c++;
+  else w++;
+ });
+ summary.innerHTML=`सही: ${c}<br>गलत: ${w}<br>अनुत्तरित: ${u}`;
+}
+
+/* SOLUTION */
+function showSolutions(){
+ result.classList.add("hidden");
+ solution.classList.remove("hidden");
+ solutionBox.innerHTML="";
+ questions.forEach((q,i)=>{
+  solutionBox.innerHTML+=`<hr><b>Q${i+1}</b><br>
+  आपका उत्तर: ${resp[i]!=null?q.o[resp[i]]:"नहीं दिया"}<br>
+  सही: ${q.o[q.c]}<br>${q.s}`;
+ });
+}
+
+/* BACK */
+function goStart(){location.reload();}
+const o=i=>document.getElementById("o"+i);
 </script>
-
 
 </body>
 </html>
-
-
-
