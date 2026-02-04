@@ -1,302 +1,430 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haryana GK Mock Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f4f6f9}
-.hidden{display:none}
 
-/* ===== BUTTONS ===== */
-button{
-  padding:9px 18px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:600;
-}
-.primary{background:#1f3c88;color:#fff}
-.secondary{background:#555;color:#fff}
-.danger{background:#e74c3c;color:#fff}
-
-/* ===== START ===== */
-#start{
-  max-width:720px;
-  margin:50px auto;
-  background:#fff;
-  padding:30px;
-  border-radius:10px;
-  text-align:center;
-  box-shadow:0 6px 16px rgba(0,0,0,.1);
-}
-#start h2{color:#1f3c88}
-
-/* ===== INSTRUCTIONS ===== */
-#instructions{
-  max-width:800px;
-  margin:30px auto;
-  background:#fff;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 6px 16px rgba(0,0,0,.1);
+/* ===================== GENERAL STYLES ===================== */
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#fdfdfd;
+  color:#333;
 }
 
-/* ===== TOP BAR ===== */
-.topbar{
-  background:#1f3c88;
-  color:#fff;
-  padding:12px 18px;
+/* ===================== HEADER ===================== */
+.header-right button,
+.header-right i{
+  animation: inOutFloat 2s ease-in-out infinite;
+}
+
+@keyframes inOutFloat{
+  0%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-6px) scale(1.05);}
+  100%{transform:translateY(0) scale(1);}
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #5aa057;
+  box-shadow: 0 2px 8px rgb(129, 231, 129);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+}
+/* LOGO AREA */
+.logo-wrapper{
   display:flex;
-  justify-content:space-between;
-  font-weight:bold;
-}
-
-/* ===== EXAM BODY ===== */
-.exam-body{display:flex}
-
-/* ===== PALETTE ===== */
-.palette{
-  width:22%;
-  background:#fff;
-  padding:10px;
-  border-right:1px solid #ccc;
-}
-.palette button{
-  width:40px;
-  height:40px;
-  margin:5px;
-  border-radius:4px;
-  font-weight:bold;
-  border:1px solid #000;
-}
-
-/* Palette Colors */
-.not-visited{background:#fff}
-.not-answered{background:#e74c3c!important;color:#fff}
-.answered{background:#2ecc71!important;color:#fff}
-.review{background:#9b59b6!important;color:#fff}
-.review-answered{
-  background:#9b59b6!important;
-  color:#fff;
-  border:3px solid #2ecc71!important;
-}
-
-/* ===== QUESTION ===== */
-.question-panel{
-  width:78%;
-  background:#fff;
-  padding:25px;
-}
-.question-panel h3{margin-top:0}
-
-/* ===== RESULT / SOLUTION ===== */
-.box{
-  max-width:850px;
-  margin:30px auto;
-  background:#fff;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 6px 16px rgba(0,0,0,.1);
-}
-
-/* ===== BACK BUTTON (PRO) ===== */
-.back-btn{
-  display:inline-flex;
   align-items:center;
   gap:10px;
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:#fff;
-  padding:12px 22px;
-  font-size:16px;
-  border-radius:30px;
-  box-shadow:0 5px 12px rgba(0,0,0,.25);
+  position:relative;
 }
-.back-btn:hover{transform:scale(1.05)}
+.logo-wrapper img{
+  width:60px;
+  height:60px;
+  border-radius:8px;
+  box-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+/* -------- HEADER BUTTONS -------- */
+.header-right button{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 8px 12px;
+ font-size: 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: inOutFloat 2s ease-in-out infinite;
+  background: #0105ff;
+  color: #ff0606;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(12, 46, 138, 0.2);
+  font-size: 28px;
+  color: #FF0000; 
+  transform: scale(1.2);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+.header-right i{
+  font-size:32px;
+  color:#FF0000;
+  cursor:pointer;
+}
+}
+/* ===================== MAIN HERO ===================== */
+main{
+  text-align:center;
+  padding:30px 20px;
+}
+.hero h2{
+  font-size:28px;
+  font-weight:700;
+  color:#4CAF50;
+}
+
+/* ================= SUBJECT BUTTONS ================= */
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,40px));
+  gap:20px;
+  padding:30px;
+}
+.subjects button{
+  padding:12px;
+  border-radius:10px;
+  border:2px solid #970707;
+  background:#fff;
+  cursor:pointer;
+  font-weight:700;
+  transition:.3s;
+}
+.subjects button:hover{
+  background:#ffdcdc;
+  transform:scale(1.08);
+}
+/* ===================== PDF MAIN BUTTON ===================== */
+#main-pdf-btn{
+  padding:12px 20px;
+  background:#1a1164;
+  color:#ffffff;
+  border:none;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+  margin-bottom:20px;
+  animation:blink 1s infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:.5;}
+}
+
+/* ===================== POPUP STYLES ===================== */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(4px);
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:80px;
+  z-index:10000;
+  animation:fadeIn .3s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.popup-box{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  width:80%;
+  max-width:500px;
+  box-shadow:0 8px 26px rgba(0,0,0,0.35);
+  animation:slideDown .3s ease;
+  position:relative;
+}
+@keyframes slideDown{
+  from{transform:translateY(-30px);opacity:0;}
+  to{transform:translateY(0);opacity:1;}
+}
+
+.popup-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  width:40px;
+  height:40px;
+  border:none;
+  background:#d11b1b;
+  color:#fff;
+  font-size:28px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* ===================== BUTTONS IN POPUP ===================== */
+.test-btn, .pdf-btn{ 
+  font-weight:600;
+  padding:10px 14px;
+  margin:6px;
+  border-radius:8px;
+  border:3px solid #000000;
+  background:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.test-btn:hover, .pdf-btn:hover{
+  background:#ff0404;
+  color:#000000;
+  transform:scale(1.07);
+}
+
+
+/* ===== FAQ SECTION ===== */
+
+/* Questions */
+.faq .question {
+  color: #f80101;      
+  font-weight: 700;
+  font-size: 16px;
+  cursor: default;
+}
+
+/* Answers */
+.faq .answer {
+  color: #0e0303;         
+  font-weight: 700;
+  margin-left: 10px;
+  font-size: 16px;
+}
+/* ================= FOOTER ================= */
+/* ===================== SOCIAL + EMAIL BUTTONS ===================== */
+.social-footer {
+  text-align: center;
+  padding: 20px;
+  background: #e08181;
+  border-radius: 12px;
+ 
+}
+/* ===== SOCIAL ICONS ===== */
+.social{
+display:inline-flex;
+align-items:center;
+gap:12px;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+text-decoration:none;
+background:#f4f6fb;
+transition:0.3s;
+}
+
+.social img{
+width:32px;
+height:32px;
+}
+
+.social span{
+font-weight:600;
+color:#1a237e;
+}
+
+.social:hover{
+background:linear-gradient(135deg,#1a237e,#3949ab);
+transform:translateX(6px);
+box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+.social:hover span{
+color:white;
+}
+  
 </style>
 </head>
 
 <body>
 
-<!-- START -->
-<div id="start">
-  <h2>🧠 Haryana GK Mock Test</h2>
-  <p>कुल प्रश्न: 25</p>
-  <p>समय: 15 मिनट</p>
-  <button class="primary" onclick="showInstructions()">Start Test</button>
-</div>
-
-<!-- INSTRUCTIONS -->
-<div id="instructions" class="hidden">
-  <h3>📝 सामान्य निर्देश</h3>
-  <ul>
-    <li>⏱ समय समाप्त होने पर परीक्षा स्वतः सबमिट होगी</li>
-    <li>🟥 लाल – Not Answered</li>
-    <li>🟩 हरा – Answered</li>
-    <li>🟪 बैंगनी – Review</li>
-  </ul>
-  <hr>
-  <input type="checkbox" id="agree"> मैंने सभी निर्देश पढ़ लिए हैं  
-  <br><br>
-  <button class="primary" onclick="startTest()">Take Test</button>
-</div>
-
-<!-- EXAM -->
-<div id="exam" class="hidden">
-  <div class="topbar">
-    <div>Haryana GK Mock</div>
-    <div id="timer">15:00</div>
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="logo-wrapper">
+    <img src="GK LOGO.png" alt="Logo">
   </div>
 
-  <div class="exam-body">
-    <div class="palette" id="palette"></div>
-
-    <div class="question-panel">
-      <h3 id="qtext"></h3>
-      <label><input type="radio" name="opt" value="0"> <span id="o0"></span></label><br>
-      <label><input type="radio" name="opt" value="1"> <span id="o1"></span></label><br>
-      <label><input type="radio" name="opt" value="2"> <span id="o2"></span></label><br>
-      <label><input type="radio" name="opt" value="3"> <span id="o3"></span></label><br><br>
-
-      <button class="secondary" onclick="clearResponse()">Clear</button>
-      <button class="secondary" onclick="markReview()">Mark for Review</button><br><br>
-
-      <button class="primary" onclick="prevQ()">Previous</button>
-      <button class="primary" onclick="saveNext()">Save & Next</button>
-      <button class="danger" onclick="submitTest()">Submit</button>
-    </div>
+  <div class="header-right">
+    <button class="youtube-btn"
+      onclick="window.open('https://youtube.com','_blank')">
+      <i class="fab fa-youtube"></i> YouTube
+    </button>
   </div>
+</header>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main>
+
+  <button id="main-pdf-btn">Open PDF Section</button>
+
+  <h2 class="hero">Start Free GK Test in One Click</h2>
+
+  <div class="subjects" id="subjects"></div>
+
+</main>
+
+<!-- ===================== FAQ ===================== -->
+<div class="faq" style="background:#87d1d1; padding:20px; border-radius:8px; margin-top:200px;">
+  <h3 style="color:#07175f; font-size:40px;">FAQ</h3>
+  <!-- Q1 -->
+  <p><span class="question">Q1: Test kaise start kare?</span></p>
+  <p><span class="answer">A: Subject par click karke test choose kare.</span></p>
+
+  <!-- Q2 -->
+  <p><span class="question">Q2: Kya test free hai ?</span></p>
+  <p><span class="answer">A: Haan, sab free hai.</span></p>
+
+  <!-- Q3 -->
+  <p><span class="question">Q3: Mobile par chalega ?</span></p>
+  <p><span class="answer">A: Haan, mobile friendly hai.</span></p>
+
+  <!-- Q4 -->
+  <p><span class="question">Q4: Contact kaise kare ?</span></p>
+  <p><span class="answer">A: Email ke through </span></p>
+  
+  <!-- ===================== FOOTER===================== -->
+
+<div class="social-footer">
+  <h1>Click The Icon For <br> Follow Us <br></h1><hr>
+  <a href="https://facebook.com" target="_blank" class="social">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+<span>Facebook</span>
+</a>
+  <a href="https://instagram.com" target="_blank" class="social">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+<span>Instagram</span>
+</a>
+<a href="mailto:apnaknowledgegroup@gmail.com" target="_blank" class="social">
+<img src="https://cdn-icons-png.flaticon.com/128/2965/2965306.png">
+<span>Email</span>
+</a>
+
+</body>
 </div>
 
-<!-- RESULT -->
-<div id="result" class="box hidden">
-  <h2>Result</h2>
-  <p id="summary"></p>
-  <button class="primary" onclick="showSolutions()">Solution</button>
 </div>
-
-<!-- SOLUTION -->
-<div id="solution" class="box hidden">
-  <h2>Solution & Analysis</h2>
-  <div id="solutionBox"></div><br>
-  <button class="back-btn" onclick="goStart()">⬅ Back to Start</button>
 </div>
-
 <script>
-/* QUESTIONS */
-const questions=[
- {q:"हरियाणा की राजधानी?",o:["रोहतक","पानीपत","चंडीगढ़","हिसार"],c:2,s:"चंडीगढ़"},
- {q:"राज्य दिवस?",o:["1 नव","15 अगस्त","26 जनवरी","2 अक्टूबर"],c:0,s:"1 नव 1966"}
+
+/* ===================== DATA ===================== */
+const DATA = {
+  History:["h1.html","h2.html","h3.html"],
+  Geography:["g1.html","g2.html","g3.html"],
+  History:["h1.html","h2.html","h3.html"],
+  Geography:["g1.html","g2.html","g3.html"],
+  Polity:["p1.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html","p3.html","p2.html"],
+  Science:["s1.html","s2.html","s3.html"]
+};
+
+const PDF_FILES = [
+  "pdfs/pdf1.pdf","pdfs/pdf2.pdf","pdfs/pdf3.pdf"
 ];
-while(questions.length<25){
- let i=questions.length+1;
- questions.push({q:`GK प्रश्न ${i}`,o:["A","B","C","D"],c:1,s:"Demo"});
+
+/* ===================== CREATE SUBJECT BUTTONS ===================== */
+const subjectDiv=document.getElementById("subjects");
+Object.keys(DATA).forEach(sub=>{
+  const btn=document.createElement("button");
+  btn.className="subject-btn";
+  btn.innerText=sub;
+  btn.onclick=()=>openSubjectPopup(sub);
+  subjectDiv.appendChild(btn);
+});
+
+/* ===================== SUBJECT POPUP ===================== */
+function openSubjectPopup(sub){
+  const overlay=document.createElement("div");
+  overlay.className="popup-overlay";
+
+  const box=document.createElement("div");
+  box.className="popup-box";
+
+  const closeBtn=document.createElement("button");
+  closeBtn.className="popup-close";
+  closeBtn.innerHTML="&times;";
+  closeBtn.onclick=()=>overlay.remove();
+  box.appendChild(closeBtn);
+
+  const title=document.createElement("h3");
+  title.innerText=sub+" Tests";
+  box.appendChild(title);
+
+  DATA[sub].forEach((file,i)=>{
+    const b=document.createElement("button");
+    b.className="test-btn";
+    b.innerText=sub+" Test "+(i+1);
+    b.onclick=()=>window.open(file,"_blank");
+    box.appendChild(b);
+  });
+
+  overlay.onclick = (e) => {
+    if(e.target===overlay) overlay.remove();
+  };
+
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
 }
 
-/* STATE */
-let idx=0,time=900,timer;
-let resp={},visited=new Set(),review=new Set();
-const timerBox=document.getElementById("timer");
+/* ===================== PDF POPUP ===================== */
+document.getElementById("main-pdf-btn").onclick = ()=>{
+  const overlay=document.createElement("div");
+  overlay.className="popup-overlay";
 
-/* FLOW */
-function showInstructions(){
- start.classList.add("hidden");
- instructions.classList.remove("hidden");
-}
+  const box=document.createElement("div");
+  box.className="popup-box";
 
-function startTest(){
- if(!agree.checked){alert("निर्देश स्वीकार करें");return;}
- instructions.classList.add("hidden");
- exam.classList.remove("hidden");
- createPalette();
- renderQ();
- startTimer();
-}
+  const closeBtn=document.createElement("button");
+  closeBtn.className="popup-close";
+  closeBtn.innerHTML="&times;";
+  closeBtn.onclick=()=>overlay.remove();
+  box.appendChild(closeBtn);
 
-/* TIMER */
-function startTimer(){
- timer=setInterval(()=>{
-  time--;
-  let m=Math.floor(time/60),s=time%60;
-  timerBox.innerText=`${m}:${s<10?"0"+s:s}`;
-  if(time<=0)submitTest();
- },1000);
-}
+  const title=document.createElement("h3");
+  title.innerText="PDF Section";
+  box.appendChild(title);
 
-/* RENDER */
-function renderQ(){
- visited.add(idx);
- let q=questions[idx];
- qtext.innerText=`Q${idx+1}. ${q.q}`;
- q.o.forEach((v,i)=>o(i).innerText=v);
- document.querySelectorAll("input[name=opt]").forEach(r=>r.checked=false);
- if(resp[idx]!=null)document.querySelector(`input[value="${resp[idx]}"]`).checked=true;
- updatePalette();
-}
+  PDF_FILES.forEach((file,i)=>{
+    const b=document.createElement("button");
+    b.className="pdf-btn";
+    b.innerText="PDF "+(i+1);
+    b.onclick=()=>window.open(file,"_blank");
+    box.appendChild(b);
+  });
 
-/* PALETTE */
-function createPalette(){
- palette.innerHTML="";
- questions.forEach((_,i)=>{
-  let b=document.createElement("button");
-  b.innerText=i+1;
-  b.onclick=()=>{idx=i;renderQ();}
-  palette.appendChild(b);
- });
-}
-function updatePalette(){
- palette.querySelectorAll("button").forEach((b,i)=>{
-  b.className="";
-  if(review.has(i)&&resp[i]!=null)b.classList.add("review-answered");
-  else if(review.has(i))b.classList.add("review");
-  else if(resp[i]!=null)b.classList.add("answered");
-  else if(visited.has(i))b.classList.add("not-answered");
-  else b.classList.add("not-visited");
- });
-}
+  overlay.onclick = (e) => {
+    if(e.target===overlay) overlay.remove();
+  };
 
-/* ACTIONS */
-function saveNext(){
- let s=document.querySelector("input[name=opt]:checked");
- if(s)resp[idx]=+s.value;
- idx=Math.min(idx+1,questions.length-1);
- renderQ();
-}
-function prevQ(){idx=Math.max(idx-1,0);renderQ();}
-function clearResponse(){delete resp[idx];renderQ();}
-function markReview(){review.has(idx)?review.delete(idx):review.add(idx);updatePalette();}
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+};
 
-/* SUBMIT */
-function submitTest(){
- clearInterval(timer);
- exam.classList.add("hidden");
- result.classList.remove("hidden");
- let c=0,w=0,u=0;
- questions.forEach((q,i)=>{
-  if(resp[i]==null)u++;
-  else if(resp[i]==q.c)c++;
-  else w++;
- });
- summary.innerHTML=`सही: ${c}<br>गलत: ${w}<br>अनुत्तरित: ${u}`;
-}
+/* ===================== UTIL ===================== */
+function openLink(url){window.open(url,"_blank");}
+function goFAQ(){document.getElementById("footerFaq").scrollIntoView({behavior:"smooth"});}
 
-/* SOLUTION */
-function showSolutions(){
- result.classList.add("hidden");
- solution.classList.remove("hidden");
- solutionBox.innerHTML="";
- questions.forEach((q,i)=>{
-  solutionBox.innerHTML+=`<hr><b>Q${i+1}</b><br>
-  आपका उत्तर: ${resp[i]!=null?q.o[resp[i]]:"नहीं दिया"}<br>
-  सही: ${q.o[q.c]}<br>${q.s}`;
- });
-}
-
-/* BACK */
-function goStart(){location.reload();}
-const o=i=>document.getElementById("o"+i);
 </script>
 
 </body>
