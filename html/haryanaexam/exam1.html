@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Question Dashboard</title>
+  <link rel="stylesheet" href="allexamscss.css" />
+    
+</head>
+<body>
+  <header>
+    <header class="exam-header">
+      <div class="logo-wrap">
+        <img src="weblogo.png" alt="Logo" />
+      </div>
+      <h1>Haryana CET - Mock Test (1)</h1>
+      <div class="timer-wrap">
+        Time Left: <span id="timer">10:00</span>
+      </div>
+    </header>
+  </header>
+
+  <div class="wrap">
+    <!-- LEFT -->
+    <div class="left">
+      <div id="questionCard" class="card">
+        <div id="questionText" class="question-text"></div>
+        <div id="optionsArea" class="options"></div>
+        <hr />
+        <div class="controls">
+          <button class="btn primary" onclick="prevQuestion()">Previous</button>
+          <button class="btn primary" onclick="nextQuestion()">Next</button>
+          <button class="btn warn" onclick="saveAndNext()">Save & Next</button>
+          <button class="btn review" onclick="markReview()">Mark for Review</button>
+          <button class="btn" onclick="clearSelection()">Clear</button>
+          <button class="btn success" style="margin-left: auto" onclick="submitExam()">Submit</button>
+        </div>
+        <div class="small" id="qStatus"></div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="resultSummary" class="card result-summary" style="display: none;">
+        <div class="result-header">
+          <h3> Your Result</h3>
+          <span id="resultStatus" class="badge pass">PASS</span>
+        </div>
+
+        <div class="result-cards" id="resultCardsContainer">
+          <!-- Cards will be dynamically inserted here -->
+        </div>
+
+        <div id="perQuestionResults"></div>
+        <button class="btn danger" onclick="goHome()">Go to Home</button>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right card">
+      <h3>Question Palette</h3>
+      <div id="paletteButtons" class="palette-grid"></div>
+    </div>
+  </div>
+
+<script>
+/* =================== QUESTIONS =================== */
+const questions = [
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  { text: "Computer ka brain kisko kaha jata hai?", options: ["CPU", "Monitor", "Keyboard", "Mouse"], answer: "CPU", explanation: "CPU (Central Processing Unit) computer ka brain hota hai." },
+  { text: "Internet ka full form kya hai?", options: ["International Network", "Internal Net", "Interconnected Nodes", "Integrated Network"], answer: "International Network", explanation: "Exams me commonly 'International Network' likha jata hai." },
+  
+];
+
+let currentIndex = 0;
+let answers = {}, tempAnswers = {}, marked = {};
+let visited = new Set();
+let examSubmitted = false;
+
+/* =================== PALETTE INIT =================== */
+const palette = document.getElementById("paletteButtons");
+questions.forEach((_, i) => {
+  const b = document.createElement("button");
+  b.textContent = i + 1;
+  b.className = "pal-btn pv-notVisited";
+  b.onclick = () => loadQuestion(i);
+  palette.appendChild(b);
+});
+// Disable right-click document.addEventListener('contextmenu', event => event.preventDefault()); // Disable copy shortcut (Ctrl+C) document.addEventListener('copy', event => { event.preventDefault(); alert("❌ Copy not allowed during exam!"); }); // Disable text selection document.addEventListener('selectstart', event => event.preventDefault());
+/* =================== LOAD QUESTION =================== */
+function loadQuestion(i) {
+  currentIndex = i;
+  visited.add(i);
+  const q = questions[i];
+
+  document.getElementById("questionText").innerText = `Q${i + 1}. ${q.text}`;
+
+  const labels = ["A", "B", "C", "D"];
+  const optionsArea = document.getElementById("optionsArea");
+  const displayChoice = tempAnswers[i] ?? answers[i] ?? null;
+
+  optionsArea.innerHTML = q.options.map((o, idx) => {
+    const selClass = displayChoice === o ? "selected" : "";
+    const checked = displayChoice === o ? "checked" : "";
+    return `<label class="${selClass}">
+      <strong>${labels[idx]}.</strong>
+      <input type="radio" name="opt" value="${o}" ${checked}
+        onchange="selectOption('${o}')">${o}
+    </label>`;
+  }).join("");
+
+  updateStatus();
+  updatePalette();
+}
+
+/* =================== OPTION SELECTION =================== */
+function selectOption(val) {
+  tempAnswers[currentIndex] = val;
+  document.querySelectorAll("#optionsArea label").forEach(lbl => {
+    const input = lbl.querySelector("input");
+    if (input.value === val) {
+      lbl.classList.add("selected");
+      input.checked = true;
+    } else {
+      lbl.classList.remove("selected");
+      input.checked = false;
+    }
+  });
+  updateStatus();
+}
+
+/* =================== STATUS & PALETTE =================== */
+function updateStatus() {
+  const qStatus = document.getElementById("qStatus");
+  const hasSaved = answers[currentIndex] !== undefined;
+  const hasTemp = tempAnswers[currentIndex] !== undefined;
+
+  if (hasSaved) qStatus.innerText = "Answered (Saved)";
+  else if (hasTemp) qStatus.innerText = "Answered (Not Saved)";
+  else if (visited.has(currentIndex)) qStatus.innerText = "Not Answered";
+  else qStatus.innerText = "Not Visited";
+}
+
+function updatePalette() {
+  [...palette.children].forEach((b, i) => {
+    if (marked[i] && answers[i]) b.className = "pal-btn pv-reviewAnswered";
+    else if (marked[i]) b.className = "pal-btn pv-review";
+    else if (answers[i]) b.className = "pal-btn pv-answered";
+    else if (visited.has(i)) b.className = "pal-btn pv-notAnswered";
+    else b.className = "pal-btn pv-notVisited";
+  });
+}
+
+/* =================== CONTROLS =================== */
+function prevQuestion() { if (currentIndex > 0) loadQuestion(currentIndex - 1); }
+function nextQuestion() { if (currentIndex < questions.length - 1) loadQuestion(currentIndex + 1); }
+
+function saveAndNext() {
+  if (tempAnswers[currentIndex]) answers[currentIndex] = tempAnswers[currentIndex];
+  updatePalette();
+  updateStatus();
+  nextQuestion();
+}
+
+function markReview() {
+  marked[currentIndex] = true;
+  updatePalette();
+  nextQuestion();
+}
+
+function clearSelection() {
+  delete tempAnswers[currentIndex];
+  delete answers[currentIndex];
+  loadQuestion(currentIndex);
+}
+
+/* =================== TIMER =================== */
+let t = 600;
+const timerEl = document.getElementById("timer");
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${s < 10 ? "0" + s : s}`;
+}
+
+timerEl.innerText = formatTime(t);
+
+const timerInterval = setInterval(() => {
+  if (examSubmitted) return clearInterval(timerInterval);
+  t--;
+  timerEl.innerText = formatTime(t);
+  if (t <= 0) submitExam(true);
+}, 1000);
+
+/* =================== MOTIVATION MESSAGE =================== */
+function setMotivationMessage(text) {
+  let msg = document.getElementById("motivationMsg");
+  if (!msg) {
+    msg = document.createElement("h2");
+    msg.id = "motivationMsg";
+    msg.style.textAlign = "center";
+    msg.style.margin = "20px 0";
+    msg.style.fontSize = "1.5rem";
+    msg.style.color = "#ff5722";
+    document.getElementById("resultSummary").prepend(msg);
+  }
+  msg.innerText = text;
+}
+
+/* =================== SUBMIT EXAM =================== */
+function submitExam(auto = false) {
+  if (examSubmitted) return;
+  if (!auto && !confirm("Submit exam?")) return;
+
+  examSubmitted = true;
+  clearInterval(timerInterval);
+  timerEl.innerText = auto ? "00:00" : "Exam Submitted";
+
+  let score = 0;
+  questions.forEach((q, i) => {
+    if (answers[i] === q.answer) score += 2;
+  });
+
+  const acc = Math.round((score / (questions.length * 2)) * 100);
+
+  document.getElementById("questionCard").style.display = "none";
+  document.querySelector(".right").style.display = "none";
+
+  const resultSummary = document.getElementById("resultSummary");
+  resultSummary.style.display = "block";
+
+  const resultCardsContainer = document.getElementById("resultCardsContainer");
+  resultCardsContainer.innerHTML = "";
+
+  const gradeImages = {
+    fail: "https://img.icons8.com/ios-filled/100/fa314a/cancel.png",
+    gradeC: "https://cdn-icons-png.flaticon.com/128/10393/10393612.png",
+    gradeB: "https://cdn-icons-png.flaticon.com/128/2374/2374861.png",
+    gradeA: "https://cdn-icons-png.flaticon.com/128/2374/2374851.png"
+  };
+
+  function getGrade(p) {
+    if (p < 33) return "fail";
+    if (p < 50) return "gradeC";
+    if (p < 80) return "gradeB";
+    return "gradeA";
+  }
+
+  const gradeKey = getGrade(acc);
+  const gradeTextMap = { fail: "FAIL", gradeC: "Grade C", gradeB: "PRO", gradeA: "TOPPER" };
+
+  function createCard(label, value) {
+    const card = document.createElement("div");
+    card.className = "res-card";
+    card.innerHTML = `<div class="label">${label}</div><div class="val">${value}</div>`;
+    return card;
+  }
+
+  resultCardsContainer.appendChild(createCard("Total Marks", questions.length * 2));
+  resultCardsContainer.appendChild(createCard("Obtained", score));
+  resultCardsContainer.appendChild(createCard("Answered", Object.keys(answers).length + "/" + questions.length));
+  resultCardsContainer.appendChild(createCard("Accuracy", acc + "%"));
+  resultCardsContainer.appendChild(createCard("Result", gradeTextMap[gradeKey]));
+
+  const resultStatus = document.getElementById("resultStatus");
+  if (gradeKey === "fail") {
+    resultStatus.innerText = "FAIL";
+    resultStatus.className = "badge fail";
+    setMotivationMessage("“असफलता केवल यह बताती है कि तुम्हारी मेहनत की चाबी अभी सही ताले तक नहीं पहुँची है; जब तक तुम कोशिश करते रहोगे, हर ताला एक दिन तुम्हारे सामने खुल जाएगा और वही तुम्हारी सबसे बड़ी जीत होगी।”");
+  } else {
+    resultStatus.innerText = "PASS";
+    resultStatus.className = "badge pass";
+    setMotivationMessage("“सफलता केवल यह प्रमाण है कि तुम्हारी मेहनत सही दिशा में है; लेकिन असली महानता तब जन्म लेती है जब तुम सफलता को मंज़िल नहीं, बल्कि अगली यात्रा की सीढ़ी बना लेते हो।”");
+  }
+
+  const perQuestionResults = document.getElementById("perQuestionResults");
+  perQuestionResults.innerHTML = "";
+  questions.forEach((q, i) => {
+    const chosen = answers[i];
+    perQuestionResults.innerHTML += `
+      <div class="result-row">
+        <b>Q${i + 1}:</b> ${q.text}<br>
+        <b>Your Option:</b> ${chosen || "Not Answered"}<br>
+        <b>Correct Option:</b> ${q.answer}<br>
+        <b>Explanation:</b> ${q.explanation}
+      </div>
+    `;
+  });
+
+  launchGradeAnimation(gradeImages[gradeKey], gradeTextMap[gradeKey]);
+}
+
+/* =================== SIMPLE GRADE DISPLAY (NO FIREWORKS) =================== */
+function launchGradeAnimation(imgSrc, gradeText) {
+  const oldCanvas = document.getElementById("fireworksCanvas");
+  if (oldCanvas) oldCanvas.style.display = "none";
+
+  const overlay = document.createElement("div");
+  overlay.style.cssText = `
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.75);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    z-index:9999;
+  `;
+
+  const img = document.createElement("img");
+  img.src = imgSrc;
+  img.style.width = "200px";
+
+  const text = document.createElement("div");
+  text.innerText = gradeText;
+  text.style.color = "#fff";
+  text.style.fontSize = "3rem";
+  text.style.marginTop = "10px";
+
+  overlay.appendChild(img);
+  overlay.appendChild(text);
+  document.body.appendChild(overlay);
+
+  setTimeout(() => overlay.remove(), 2000);
+}
+
+/* =================== GO HOME =================== */
+function goHome() {
+  window.location.href = "allhomepagehtml.html";
+}
+
+/* =================== INIT =================== */
+loadQuestion(0);
+</script>
+
