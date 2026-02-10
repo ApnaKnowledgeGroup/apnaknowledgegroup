@@ -1,530 +1,418 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Computer Mock Test — Pro</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<title>Home Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root{
-  --primary:#2980b9; --danger:#e74c3c; --success:#27ae60; --muted:#777;
-  --card-bg:#fff; --page-bg:#f4f6f9;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Segoe UI,Arial;background:var(--page-bg);color:#222}
-header{background:var(--primary);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
-header h1{font-size:16px;margin:0}
-.wrap{display:flex;gap:18px;padding:18px}
-.left{flex:3}
-.right{flex:1;max-height:75vh;overflow:auto}
-.card{background:#fff;border-radius:10px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.question-text{font-weight:700;margin-bottom:10px}
-
-.options label{
-  display:block;
-  padding:10px;
-  border:1px solid #eee;
-  border-radius:8px;
-  margin-bottom:8px;
-  cursor:pointer;
-}
-.options label.selected{
-  background:#e8f6ff;
-  border-color:var(--primary);
+  --bg:#ffffff;
+  --card:#121a33;
+  --shine:linear-gradient(120deg,transparent,rgba(255,255,255,.85),transparent);
 }
 
-.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.btn{padding:8px 12px;border:none;border-radius:8px;cursor:pointer}
-.primary{background:var(--primary);color:#fff}
-.warn{background:#f39c12;color:#fff}
-.review{background:#9b59b6;color:#fff}
-.success{background:#27ae60;color:#fff}
-.danger{background:#e74c3c;color:#fff}
-
-.palette-grid{display:flex;flex-wrap:wrap;gap:8px}
-.pal-btn{
-  width:44px;height:44px;border-radius:8px;border:none;
-  font-weight:700;cursor:pointer
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:#ffffff;
+  text-align:center;
 }
-.pv-notVisited{background:#eee}
-.pv-notAnswered{background:#e74c3c;color:#fff}
-.pv-answered{background:#27ae60;color:#fff}
-.pv-review{background:#9b59b6;color:#fff}
-.pv-reviewAnswered{background:#27ae60;color:#fff;border:2px solid #9b59b6}
 
-.small{font-size:13px;color:#777}
-
-/* RESULT DASHBOARD */
-.result-summary{display:none}
-.result-header{display:flex;justify-content:space-between;align-items:center}
-.badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
-.pass{background:#eafaf1;color:#27ae60}
-.fail{background:#fdecea;color:#e74c3c}
-
-.result-cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:14px;margin:14px 0
-}
-.res-card{
-  background:#f8fafc;
-  border-radius:10px;
-  padding:14px;
-  text-align:center
-}
-.res-card .val{font-size:22px;font-weight:700}
-.progress{height:10px;background:#eee;border-radius:6px;overflow:hidden;margin-top:8px}
-.progress span{height:100%;display:block;background:#27ae60}
-
-.result-row{border-top:1px solid #eee;padding:12px 0}
-.correct{color:#27ae60;font-weight:700}
-.wrong{color:#e74c3c;font-weight:700}
-.unanswered{color:#999;font-weight:700}
-
-/* Watermark to discourage screenshots */
-#watermark{
+/* ===== HEADER ===== */
+header{
   position:fixed;
-  left:0;top:0;right:0;bottom:0;
-  pointer-events:none;
-  z-index:9999;
+  top:0;left:0;
+  width:100%;
+  padding:10px 14px;
+  background:linear-gradient(135deg,#d80e0e,#00d2ff);
   display:flex;
-  align-items:flex-end;
-  justify-content:flex-end;
-  padding:12px;
-  opacity:0.12;
-  font-size:14px;
-  color:#000;
-  mix-blend-mode:multiply;
-  user-select:none;
-  white-space:nowrap;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
 }
 
-/* Warning banner (main area) */
-#warnBanner{
-  position:fixed;
-  left:50%;transform:translateX(-50%);
-  top:10px;
-  background:#fff3cd;color:#856404;padding:10px 14px;border-radius:8px;display:none;z-index:10000;
-  box-shadow:0 4px 12px rgba(0,0,0,.12);
-  border:1px solid #ffeeba;
+/* LOGO */
+.logo-box{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+}
+.logo-box img{height:50px}
+.logo-box::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--shine);
+  animation:shine 3s infinite;
 }
 
-/* Critical countdown overlay (center) */
-#countdownOverlay{
-  position:fixed;
-  left:50%;top:50%;transform:translate(-50%,-50%);
-  background:rgba(0,0,0,0.85);color:#fff;padding:18px 22px;border-radius:10px;display:none;z-index:10002;
-  text-align:center;font-size:22px;
+/* ===== MAIN ===== */
+main{
+  padding:95px 14px 60px;color:#000000
+}
+h1{font-size:2.2rem;
+  font-family:'Trajan Pro'}
+h2{color:#ff0000;
+  font-family:'serif';
+  font-size:2.1rem;
+  margin:8px 0 22px}
+h3{color:#000000;
+  font-size:1.8rem;
+  font-family: 'Bebas Neue';
+  margin:8px 0 22px}
+h4{color:#ffffff;
+  font-size:1.5rem;
+  font-family: 'sans-serif';
+  margin:8px 0 22px}
+
+/* ===== YOUTUBE STYLE BOX ===== */
+.box-btn{
+  width:150px;
+  height:150px;
+  background:var(--card);
+  border-radius:15px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgb(255, 241, 241);
+  transition:.3s;
+  margin:auto;
 }
 
-/* Sidebar warnings area (inside right panel) */
-#sidebarWarnings{
-  margin-top:12px;
-  padding:8px;
-  background:#fff7f0;border-radius:8px;border:1px solid #ffe6d5;
+.box-btn img{width:50px}
+
+.box-btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--shine);
+  animation:shine 2.5s infinite;
+}
+
+.box-btn:hover{
+  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 15px 40px rgb(150, 76, 76);
+}
+
+/* HEADER YOUTUBE BUTTON FIX */
+header .box-btn{
+  width:auto;
+  height:auto;
+  padding:8px 14px;
+  flex-direction:row;
+  gap:8px;
+  margin:0;
+}
+
+/* ===== SUBJECT GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:18px;
+  max-width:1000px;
+  margin:auto;
+}
+/* ===== POPUP ===== */
+.popup{
   display:none;
-}
-#sidebarWarnings .witem{font-size:13px;color:#7a3b00;padding:6px 0;border-bottom:1px dashed #ffd9b8}
-#sidebarWarnings .witem:last-child{border-bottom:none}
-
-/* final critical banner (keeps visible briefly) */
-#critBanner{
   position:fixed;
-  left:50%;transform:translateX(-50%);
-  top:80px;
-  background:#f8d7da;color:#721c24;padding:10px 14px;border-radius:8px;display:none;z-index:10001;
-  box-shadow:0 4px 12px rgba(0,0,0,.12);
-  border:1px solid #f5c6cb;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+.popup-box{
+  background:#0f172a;
+  padding:22px;
+  width:95%;
+  max-width:720px;
+  border-radius:24px;
+  max-height:85vh;
+  overflow-y:auto;
+}
+.popup-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
+  margin-top:18px;
 }
 
-/* small responsive */
-@media(max-width:900px){.wrap{flex-direction:column}}
+/* ===== FAQ ===== */
+.faq{
+  max-width:900px;
+  margin:60px auto;
+  text-align:left;
+  padding:0 14px;
+}
+.faq details{
+  background:var(--card);
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:12px;
+}
+
+/* ===== FOUNDER ===== */
+.founder{
+  padding:55px 14px;
+}
+.founder-img{
+  width:140px;
+  height:140px;
+  margin:auto;
+  border-radius:50%;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 0 30px rgba(255,0,0,.7);
+}
+.founder-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.founder-img::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--shine);
+  animation:shine 3s infinite;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#020617;
+  padding:22px 10px;
+}
+
+/* SOCIAL ICONS */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:12px;
+}
+.social a{
+  width:42px;
+  height:42px;
+  background:#121a33;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.social img{width:22px}
+.social a::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--shine);
+  animation:shine 3s infinite;
+}
+
+/* ===== SHINE ===== */
+@keyframes shine{
+  0%{transform:translateX(-120%)}
+  40%{transform:translateX(120%)}
+  100%{transform:translateX(120%)}
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  h1{font-size:1.6rem}
+  .box-btn{width:130px;height:130px}
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Computer Basics — Mock Test</h1>
-  <div>Time Left: <span id="timer">60:00</span></div>
+  <div class="logo-box">
+    <img src="weblogo.png">
+  </div>
+
+  <div class="box-btn" onclick="window.open('https://youtube.com','_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/128/16064/16064615.png">
+    YouTube
+  </div>
 </header>
 
-<div id="warnBanner"></div>
-<div id="critBanner"></div>
-<div id="countdownOverlay"></div>
+<main>
+<h1>✨ Welcome✨ </h1>
+<h2>🔥 Free 🔥</h2>
+<h3>💻Mock Tests & PDFs📝</h3>
 
-<div class="wrap">
+<!--  MAIN PDF BOX BUTTON -->
+<div class="box-btn" onclick="openPDFs()">
+  <img src="https://cdn-icons-png.flaticon.com/128/3997/3997593.png">
+  <h4>View PDFs</h4>
+</div>
 
-<!-- LEFT -->
-<div class="left">
+<br><br>
 
-<div id="questionCard" class="card">
-  <div id="questionText" class="question-text"></div>
-  <div id="optionsArea" class="options"></div>
+<div class="grid">
 
-  <div class="controls">
-    <button class="btn primary" onclick="prevQuestion()">Previous</button>
-    <button class="btn primary" onclick="nextQuestion()">Next</button>
-    <button class="btn warn" onclick="saveAndNext()">Save & Next</button>
-    <button class="btn review" onclick="markReview()">Mark for Review</button>
-    <button class="btn" onclick="clearSelection()">Clear</button>
-    <button class="btn success" style="margin-left:auto" onclick="submitExam()">Submit</button>
+  <div class="box-btn" onclick="openSubject('Haryana')">
+    <img src="Haryanaweb.png">
+    <h4>Haryana</h4>
   </div>
 
-  <div class="small" id="qStatus"></div>
-</div>
-
-<!-- RESULT -->
-<div id="resultSummary" class="card result-summary">
-
-  <div class="result-header">
-    <h3>Result Dashboard</h3>
-    <span id="resultStatus" class="badge pass">PASS</span>
+  <div class="box-btn" onclick="openSubject('Railway')">
+    <img src="https://cdn-icons-png.flaticon.com/128/713/713309.png">
+    <h4>Railway</h4>
   </div>
 
-  <div id="warningsAfterSubmit" style="display:none;margin-bottom:12px;padding:10px;background:#fff7f0;border-radius:8px;border:1px solid #ffe6d5;color:#7a3b00"></div>
+</div>
 
-  <div class="result-cards">
-    <div class="res-card"><div>Total Marks</div><div id="dmTotal" class="val"></div></div>
-    <div class="res-card">
-      <div>Obtained</div>
-      <div id="dmObtained" class="val"></div>
-      <div class="progress"><span id="dmProgress"></span></div>
-    </div>
-    <div class="res-card"><div>Answered</div><div id="dmAnswered" class="val"></div></div>
-    <div class="res-card"><div>Accuracy</div><div id="dmAccuracy" class="val"></div></div>
+</main>
+
+<!-- ================= POPUP ================= -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2 id="popupTitle"></h2>
+
+    <!--  POPUP BOX GRID -->
+    <div class="popup-grid" id="popupBody"></div>
+
+    <br>
+    <div class="box-btn" onclick="closePopup()">Close</div>
   </div>
-
-  <div id="perQuestionResults"></div>
-
-  <button class="btn danger" onclick="goHome()">Go to Home</button>
 </div>
 
-</div>
+<section class="faq">
+  <details>
+    <summary>Test kaise start kare?</summary><Br>
+    <p>Subject par click karke test choose kare.</p>
+  </details>
+  <details>
+    <summary> Kya test free hai ?</summary><BR>
+    <p>Haan, sab free hai.</p>
+  </details>
+  <details>
+    <summary>Mobile par chalega ?</summary><br>
+    <p>Haan, mobile par chalega or real exam jaisa feel dega.</p>
+  </details>
+  <details>
+    <summary>Contact kaise kare ?</summary><Br>
+    <p>Email ke through.Footer main Email icon par click karen.👇</p>
+  </details>
+</section>
 
-<!-- RIGHT -->
-<div class="right card">
-  <h3>Question Palette</h3>
-  <div id="paletteButtons" class="palette-grid"></div>
+<section class="founder">
+  <div class="founder-img">
+    <img src="weblogo.png">
+  </div><br>
+  <h2>Aman Nain</h2>
+  <h3>Founder</h3>
+ <h3>(Apna Knowledge Group)</h3>
+ 
+</section>
 
-  <!-- Sidebar warnings shown during countdown (only for 5 seconds) -->
-  <div id="sidebarWarnings"></div>
-</div>
-
-</div>
-
-<!-- Watermark (replace USER_NAME dynamically if available) -->
-<div id="watermark">USER_NAME • <span id="wmTime"></span> • Computer Basics — Mock Test</div>
+<footer>
+    <h2><p>Follow US</p></h2>
+    <p>Click Icon 👇</p>
+  <div class="social">
+   
+    <a href="https://www.youtube.com/@yourchannel" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    </a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+    </a>
+    <a href="https://www.facebook.com/yourpage" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+    </a>
+    <a href="mailto:apnaknowledgegroup@gmail.com">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+    </a>
+  </div><br>© 2026 Apna Knowledge Group<hr>
+</footer>
 
 <script>
-/* QUESTIONS */
-const questions=[
-  { text:"Computer ka brain kisko kaha jata hai?", options:["CPU","Monitor","Keyboard","Mouse"], answer:"CPU", explanation:"CPU (Central Processing Unit) computer ka brain hota hai."},
-  { text:"Internet ka full form kya hai?", options:["International Network","Internal Net","Interconnected Nodes","Integrated Network"], answer:"International Network", explanation:"Exams me commonly 'International Network' likha jata hai."},
-  { text:"MS Word kis type ka software hai?", options:["Application Software","System Software","Utility Software","Firmware"], answer:"Application Software", explanation:"MS Word ek application software hai."}
-];
+// ==================== DATA ====================
+const data = {
+  pdf: [
+    ["Haryana PDF 1", "Haryna1.pdf", "https://cdn-icons-png.flaticon.com/128/337/337946.png"],
+    ["Railway PDF 1", "Railway1.pdf", "https://cdn-icons-png.flaticon.com/128/337/337946.png"]
+  ],
+  Haryana: [
+    ["Haryana Test 1", "Startharyanacet1.html", "Haryanaweb.png"]
+  ],
+  Railway: [
+    ["Railway Test 1", "Startrailwayexam1.html", "https://cdn-icons-png.flaticon.com/128/713/713309.png"]
+  ]
+};
 
-let currentIndex=0;
-let answers={}, tempAnswers={}, marked={}, visited=new Set();
-let examSubmitted = false;
+// ==================== POPUP ELEMENTS ====================
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupBody = document.getElementById("popupBody");
 
-/* PALETTE INIT */
-const palette=document.getElementById("paletteButtons");
-questions.forEach((_,i)=>{
-  const b=document.createElement("button");
-  b.textContent=i+1;
-  b.className="pal-btn pv-notVisited";
-  b.onclick=()=>loadQuestion(i);
-  palette.appendChild(b);
-});
+// ==================== OPEN SUBJECT POPUP ====================
+function openSubject(sub){
+    popupTitle.innerText = sub + " Section";
+    popupBody.innerHTML = "";
 
-/* LOAD QUESTION */
-function loadQuestion(i){
-  currentIndex=i;
-  visited.add(i);
-  const q=questions[i];
-  document.getElementById('questionText').innerText=`Q${i+1}. ${q.text}`;
+    data[sub].forEach(item => {
+        const div = document.createElement("div");
+        div.className = "box-btn";
+        div.innerHTML = `<img src="${item[2]}"> ${item[0]}`;
+        div.onclick = () => {
+            window.location.href = item[1] + "?from=" + encodeURIComponent(sub);
+        };
+        popupBody.appendChild(div);
+    });
 
-  const labels=["A","B","C","D"];
-  const optionsArea = document.getElementById('optionsArea');
-
-  const displayChoice = (tempAnswers.hasOwnProperty(i) ? tempAnswers[i] : (answers.hasOwnProperty(i) ? answers[i] : null));
-
-  optionsArea.innerHTML = q.options.map((o,idx)=>{
-    const selClass = (displayChoice==o) ? 'selected' : '';
-    const checked = (displayChoice==o) ? 'checked' : '';
-    return `<label class="${selClass}">
-      <strong>${labels[idx]}.</strong>
-      <input type="radio" name="opt" value="${o}" ${checked}
-      onchange="selectOption('${o}')">
-      ${o}
-    </label>`;
-  }).join("");
-
-  updateStatus();
-  updatePalette();
+    popup.style.display = "flex";
 }
 
-function selectOption(val){
-  tempAnswers[currentIndex] = val;
-  const labels = document.querySelectorAll('#optionsArea label');
-  labels.forEach(lbl=>{
-    const input = lbl.querySelector('input');
-    if(input && input.value === val){
-      lbl.classList.add('selected');
-      input.checked = true;
-    } else {
-      lbl.classList.remove('selected');
-      if(input) input.checked = false;
+// ==================== OPEN PDF POPUP ====================
+function openPDFs(){
+    popupTitle.innerText = "PDF Section";
+    popupBody.innerHTML = "";
+
+    data.pdf.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "box-btn";
+        div.innerHTML = `<img src="${item[2]}"> ${item[0]}`;
+        div.onclick = () => {
+            window.location.href = item[1] + "?from=PDF";
+        };
+        popupBody.appendChild(div);
+    });
+
+    popup.style.display = "flex";
+}
+
+// ==================== CLOSE POPUP ====================
+function closePopup(){
+    popup.style.display = "none";
+}
+
+// ==================== AUTO OPEN POPUP FROM URL ====================
+window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const popupName = params.get("popup"); // e.g., Haryana, Railway, PDF
+
+    if(popupName){
+        if(popupName.toLowerCase() === "pdf"){
+            openPDFs();
+        } else {
+            openSubject(popupName);
+        }
     }
-  });
-  updateStatus();
-}
-
-function updateStatus(){
-  const qStatus = document.getElementById('qStatus');
-  const hasSaved = answers.hasOwnProperty(currentIndex);
-  const hasTemp = tempAnswers.hasOwnProperty(currentIndex);
-  if(hasSaved && hasTemp && answers[currentIndex]===tempAnswers[currentIndex]){
-    qStatus.innerText = "Answered (Saved)";
-  } else if(hasSaved){
-    qStatus.innerText = "Answered (Saved)";
-  } else if(hasTemp){
-    qStatus.innerText = "Answered (Not Saved)";
-  } else if(visited.has(currentIndex)){
-    qStatus.innerText = "Not Answered";
-  } else {
-    qStatus.innerText = "Not Visited";
-  }
-}
-
-function updatePalette(){
-  [...palette.children].forEach((b,i)=>{
-    if(marked[i] && answers[i]) b.className="pal-btn pv-reviewAnswered";
-    else if(marked[i]) b.className="pal-btn pv-review";
-    else if(answers[i]) b.className="pal-btn pv-answered";
-    else if(visited.has(i)) b.className="pal-btn pv-notAnswered";
-    else b.className="pal-btn pv-notVisited";
-  });
-}
-
-/* CONTROLS */
-function prevQuestion(){ if(currentIndex>0) loadQuestion(currentIndex-1) }
-function nextQuestion(){ if(currentIndex<questions.length-1) loadQuestion(currentIndex+1) }
-function saveAndNext(){
-  if(tempAnswers.hasOwnProperty(currentIndex)){
-    answers[currentIndex] = tempAnswers[currentIndex];
-    tempAnswers[currentIndex] = answers[currentIndex];
-  }
-  updatePalette();
-  updateStatus();
-  if(currentIndex < questions.length-1) loadQuestion(currentIndex+1);
-}
-function markReview(){ marked[currentIndex]=true; updatePalette(); if(currentIndex < questions.length-1) loadQuestion(currentIndex+1); }
-function clearSelection(){
-  delete tempAnswers[currentIndex];
-  delete answers[currentIndex];
-  document.querySelectorAll('#optionsArea input[name="opt"]').forEach(i=>{
-    i.checked = false;
-    if(i.parentElement) i.parentElement.classList.remove('selected');
-  });
-  updatePalette();
-  updateStatus();
-}
-
-/* TIMER */
-let t = 3600;   // 60 minutes
-const timerEl = document.getElementById('timer');
-function formatTime(totalSec){ const m = Math.floor(totalSec/60); const s = totalSec%60; return `${m}:${s<10?'0'+s:s}`; }
-timerEl.innerText = formatTime(t);
-let timerInterval = setInterval(()=>{
-  if(examSubmitted){ clearInterval(timerInterval); return; }
-  if(t <= 0){ clearInterval(timerInterval); submitExam(true); return; }
-  t--; timerEl.innerText = formatTime(t);
-},1000);
-
-/* ANTI-CHEAT: FOCUS / VISIBILITY DETECTION WITH 10s COUNTDOWN THEN AUTO-SUBMIT
-   Behavior requested:
-   - On each blur/visibilitychange, show immediate warning.
-   - When violations reach threshold, show a 10-second countdown overlay (cannot be cancelled).
-   - During those 5 seconds show sidebar warnings; after 10s auto-submit and then show dashboard with reasons.
-*/
-let violationCount = 0;
-const warnBanner = document.getElementById('warnBanner');
-const critBanner = document.getElementById('critBanner');
-const countdownOverlay = document.getElementById('countdownOverlay');
-const sidebarWarnings = document.getElementById('sidebarWarnings');
-const warningsLog = []; // store warnings to show after submit if needed
-
-const VIOLATION_THRESHOLD = 3; // after reaching this, start 10s countdown
-let countdownTimer = null;
-let countdownValue = 10; // seconds
-
-function showWarningMain(msg){
-  if(examSubmitted) return;
-  warnBanner.innerText = msg;
-  warnBanner.style.display = 'block';
-  setTimeout(()=>{ if(!examSubmitted) warnBanner.style.display = 'none'; }, 4000);
-}
-
-function showSidebarWarningsFor5s(){
-  if(examSubmitted) return;
-  if(warningsLog.length === 0) return;
-  sidebarWarnings.innerHTML = warningsLog.map(w => `<div class="witem">${w}</div>`).join('');
-  sidebarWarnings.style.display = 'block';
-  setTimeout(()=>{ sidebarWarnings.style.display = 'none'; }, 5000);
-}
-
-function startUncancelableCountdown(){
-  if(examSubmitted) return;
-  // ensure any previous countdown cleared
-  if(countdownTimer) return;
-
-  countdownValue = 10;
-  countdownOverlay.innerHTML = `<div>सूचना : बार‑बार परीक्षा नियमों का उल्लंघन करने के कारण आपकी परीक्षा स्वतः सबमिट करनी पड़ी है।<strong id="cdNum">${countdownValue}</strong> सेकंड</div>`;
-  countdownOverlay.style.display = 'block';
-  // show sidebar warnings for the same 5 seconds
-  showSidebarWarningsFor5s();
-
-  countdownTimer = setInterval(()=>{
-    countdownValue--;
-    const cdNum = document.getElementById('cdNum');
-    if(cdNum) cdNum.innerText = countdownValue;
-    if(countdownValue <= 0){
-      clearInterval(countdownTimer);
-      countdownTimer = null;
-      countdownOverlay.style.display = 'none';
-      // auto submit after countdown ends
-      submitExam(true);
-    }
-  },1000);
-}
-
-function handleViolation(reason){
-  if(examSubmitted) return;
-  violationCount++;
-  const msg = `Warning ${violationCount}: ${reason}. कृपया टैब न बदलें या स्क्रीन न छुपाएँ.`;
-  warningsLog.push(msg);
-
-  // show immediate main warning briefly
-  showWarningMain(msg);
-
-  // if threshold reached, start uncancelable countdown (10s) then auto-submit
-  if(violationCount >= VIOLATION_THRESHOLD){
-    // show critical banner briefly (keeps visible until countdown overlay hides)
-    critBanner.style.display = 'block';
-    // start countdown after a short moment so banner is visible
-    setTimeout(()=>{ startUncancelableCountdown(); }, 300);
-    // hide critical banner when countdown overlay hides (handled in countdown end)
-  } else {
-    // show sidebar warnings briefly for this violation as well
-    showSidebarWarningsFor5s();
-  }
-
-  console.warn('Exam violation:', reason, 'count=', violationCount);
-}
-
-/* Attach listeners */
-window.addEventListener('blur', ()=>{ handleViolation('Window lost focus (blur)'); });
-document.addEventListener('visibilitychange', ()=> {
-  if(document.hidden) handleViolation('Tab switched or hidden (visibilitychange)');
 });
-
-/* KEYBOARD / CONTEXT MENU RESTRICTIONS (best-effort) */
-window.addEventListener('contextmenu', e => { e.preventDefault(); showWarningMain('Right-click disabled during exam'); });
-window.addEventListener('keydown', e => {
-  if(examSubmitted) return;
-  if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key==='I' || e.key==='J')) || (e.ctrlKey && e.key==='S') || (e.ctrlKey && e.key==='P')){
-    e.preventDefault();
-    showWarningMain('This shortcut is disabled during exam');
-  }
-  if(e.key === 'PrintScreen' || e.code === 'PrintScreen'){
-    showWarningMain('PrintScreen detected. Screenshots are not allowed.');
-  }
-});
-
-/* Watermark time updater */
-function updateWatermark(){
-  const now = new Date();
-  const hh = String(now.getHours()).padStart(2,'0');
-  const mm = String(now.getMinutes()).padStart(2,'0');
-  const ss = String(now.getSeconds()).padStart(2,'0');
-  document.getElementById('wmTime').innerText = `${hh}:${mm}:${ss}`;
-}
-setInterval(updateWatermark,1000);
-updateWatermark();
-
-/* SUBMIT */
-function submitExam(auto=false){
-  if(examSubmitted) return;
-  // If countdown active, ensure it's cleared
-  if(countdownTimer){
-    clearInterval(countdownTimer);
-    countdownTimer = null;
-    countdownOverlay.style.display = 'none';
-  }
-  // hide critical banner
-  critBanner.style.display = 'none';
-
-  if(!auto && !confirm('Submit exam?')) return;
-  examSubmitted = true;
-  clearInterval(timerInterval);
-  if(auto) timerEl.innerText = '00:00'; else timerEl.innerText = 'Exam Submitted';
-
-  // calculate score using only committed answers
-  let score=0;
-  questions.forEach((q,i)=>{ if(answers[i]==q.answer) score+=10 });
-
-  // hide question area and palette, show results
-  document.getElementById('questionCard').style.display="none";
-  document.querySelector(".right").style.display="none";
-  document.getElementById('resultSummary').style.display="block";
-
-  // show warnings log in result dashboard so student understands why auto-submitted
-  const warningsAfterSubmit = document.getElementById('warningsAfterSubmit');
-  if(warningsLog.length){
-    warningsAfterSubmit.innerHTML = `<strong>Exam auto-submitted due to the following events:</strong><br>` + warningsLog.map(w=>`<div style="margin-top:6px">${w}</div>`).join('');
-    warningsAfterSubmit.style.display = 'block';
-    // keep visible in dashboard (user asked that dashboard show reason)
-    // optionally hide after some seconds; here we keep it visible
-  }
-
-  const acc = Math.round((score/(questions.length*10))*100);
-  const resultStatus = document.getElementById('resultStatus');
-  resultStatus.innerText = acc>=33 ? "PASS" : "FAIL";
-  resultStatus.className = "badge " + (acc>=33 ? "pass" : "fail");
-
-  document.getElementById('dmTotal').innerText = questions.length*10;
-  document.getElementById('dmObtained').innerText = score;
-  document.getElementById('dmAnswered').innerText = Object.keys(answers).length + "/" + questions.length;
-  document.getElementById('dmAccuracy').innerText = acc + "%";
-  document.getElementById('dmProgress').style.width = acc + "%";
-
-  const perQuestionResults = document.getElementById('perQuestionResults');
-  perQuestionResults.innerHTML = "";
-  questions.forEach((q,i)=>{
-    const chosen = answers[i];
-    const correct = q.answer;
-    const isCorrect = chosen === correct;
-    const chosenHtml = chosen ? `<span class="${isCorrect ? 'correct' : 'wrong'}">${chosen}</span>` : `<span class="unanswered">Not Answered</span>`;
-    perQuestionResults.innerHTML += `
-      <div class="result-row">
-        <b>Q${i+1}:</b> ${q.text}<br>
-        <b>Your Option:</b> ${chosenHtml}<br>
-        <b>Correct Option:</b> <span class="correct">${correct}</span><br>
-        <b>Explanation:</b> ${q.explanation}
-      </div>
-    `;
-  });
-
-  // Optional: send violation log / answers to server for audit (example commented)
-  // fetch('/submitExam', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({answers, violations:violationCount, warnings:warningsLog})});
-}
-
-function goHome(){ window.location.href="main.html" }
-
-/* initial load */
-loadQuestion(0);
 </script>
 
 </body>
